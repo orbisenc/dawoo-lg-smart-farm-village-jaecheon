@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 190" role="img" aria-labelledby="title desc">
+  <title id="title">DAWOO HOLDINGS</title>
+  <desc id="desc">White and champagne DAWOO Holdings logo mark with rising bar symbol.</desc>
+  <defs>
+    <linearGradient id="whiteMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" />
+      <stop offset="0.54" stop-color="#f8f5ed" />
+      <stop offset="1" stop-color="#e8dfc9" />
+    </linearGradient>
+    <linearGradient id="champagne" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#b99057" />
+      <stop offset="0.48" stop-color="#e6d09b" />
+      <stop offset="1" stop-color="#fff2c7" />
+    </linearGradient>
+    <filter id="softDepth" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#000000" flood-opacity="0.22" />
+    </filter>
+  </defs>
+
+  <g filter="url(#softDepth)">
+    <g transform="translate(24 22)">
+      <path
+        fill="url(#whiteMark)"
+        d="M92 0h59c45 0 79 32 79 73s-34 73-79 73H92V0Zm42 34v78h18c22 0 38-16 38-39s-16-39-38-39h-18Z"
+      />
+      <path fill="url(#champagne)" d="M0 103h14v31H0v-31Zm23-26h18v57H23V77Zm27-30h19v87H50V47Z" />
+      <path fill="url(#champagne)" d="M0 140h74v6H0z" opacity=".88" />
+      <path fill="#ffffff" d="M85 0h9v146h-9z" opacity=".92" />
+    </g>
+
+    <g transform="translate(292 47)">
+      <text
+        x="0"
+        y="58"
+        fill="#ffffff"
+        font-family="Arial Black, Montserrat, Arial, Helvetica, sans-serif"
+        font-size="58"
+        font-weight="900"
+        letter-spacing="4"
+      >DAWOO</text>
+      <text
+        x="4"
+        y="105"
+        fill="url(#champagne)"
+        font-family="Montserrat, Arial, Helvetica, sans-serif"
+        font-size="22"
+        font-weight="800"
+        letter-spacing="16"
+      >HOLDINGS</text>
+      <path d="M3 128h350" stroke="#ffffff" stroke-width="2" stroke-opacity=".34" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" role="img" aria-label="gas boiler">
+  <rect width="120" height="100" rx="18" fill="#fbfaf7"/>
+  <rect x="42" y="15" width="38" height="68" rx="3" fill="#edf0ef" stroke="#d6d8d4"/>
+  <rect x="47" y="21" width="28" height="8" rx="1" fill="#f8f8f6"/>
+  <circle cx="61" cy="55" r="4" fill="#d8ddd9"/>
+  <path d="M46 75h30v5H46z" fill="#2e7d67"/>
+  <path d="M42 83h38" stroke="#d2c3a8" stroke-width="2"/>
+</svg>

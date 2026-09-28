@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" role="img" aria-label="wireless router">
+  <rect width="120" height="100" rx="18" fill="#fbfaf7"/>
+  <rect x="28" y="52" width="64" height="20" rx="3" fill="#262826"/>
+  <path d="M36 52V27M52 52V21M68 52V27M84 52V21" stroke="#2f3430" stroke-width="4" stroke-linecap="round"/>
+  <path d="M39 62h42" stroke="#576158" stroke-width="2"/>
+  <circle cx="47" cy="62" r="2" fill="#d8d5c8"/>
+  <circle cx="56" cy="62" r="2" fill="#d8d5c8"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" role="img" aria-label="smart switch">
+  <rect width="120" height="100" rx="18" fill="#fbfaf7"/>
+  <rect x="38" y="16" width="44" height="68" rx="2" fill="#f5f5f2" stroke="#dadbd7"/>
+  <path d="M38 38h44M38 61h44" stroke="#e3e3df" stroke-width="2"/>
+  <rect x="43" y="22" width="34" height="12" fill="#fafaf8"/>
+  <rect x="43" y="45" width="34" height="12" fill="#fafaf8"/>
+  <rect x="43" y="67" width="34" height="10" fill="#fafaf8"/>
+</svg>
