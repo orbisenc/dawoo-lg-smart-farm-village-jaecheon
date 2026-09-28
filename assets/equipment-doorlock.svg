@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" role="img" aria-label="smart door lock">
+  <rect width="120" height="100" rx="18" fill="#fbfaf7"/>
+  <rect x="50" y="17" width="20" height="60" rx="5" fill="#333533"/>
+  <rect x="55" y="25" width="10" height="20" rx="2" fill="#4b504c"/>
+  <circle cx="60" cy="55" r="3" fill="#d5c29b"/>
+  <rect x="67" y="58" width="25" height="7" rx="3" fill="#4c4b47"/>
+  <rect x="56" y="77" width="8" height="8" rx="2" fill="#8b8f88"/>
+</svg>

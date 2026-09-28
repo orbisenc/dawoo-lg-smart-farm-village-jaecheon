@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" role="img" aria-label="refrigerator">
+  <rect width="120" height="100" rx="18" fill="#fbfaf7"/>
+  <rect x="45" y="12" width="32" height="76" rx="2" fill="#efeeee" stroke="#d5d1cb"/>
+  <path d="M45 48h32" stroke="#b9b5ad" stroke-width="2"/>
+  <path d="M72 22v18M72 56v18" stroke="#c7c1b8" stroke-width="2"/>
+  <rect x="49" y="16" width="24" height="30" fill="#f8f7f4" opacity=".45"/>
+</svg>
