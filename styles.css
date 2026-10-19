@@ -17,7 +17,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 76px;
-  scroll-snap-type: y mandatory;
 }
 body {
   margin: 0;
@@ -25,10 +24,6 @@ body {
   color: var(--ink);
   font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
   letter-spacing: 0;
-}
-main > section,
-.footer {
-  scroll-snap-align: start;
 }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
@@ -72,7 +67,7 @@ button, input { font: inherit; }
   color: var(--white);
 }
 .hero-media, .hero-shade { position: absolute; inset: 0; }
-.hero-media { background: url("assets/jaecheon-entry-hero.png") center / cover no-repeat; transform: scale(1.02); }
+.hero-media { background: url("assets/jaecheon-entry-hero-updated.png") center / cover no-repeat; transform: scale(1.02); }
 .hero-shade {
   background:
     linear-gradient(90deg, rgba(5, 13, 9, 0.96), rgba(5, 13, 9, 0.74) 38%, rgba(5, 13, 9, 0.12) 78%),
@@ -84,7 +79,7 @@ button, input { font: inherit; }
   width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
   padding: 136px 0 44px;
-  transform: translateX(clamp(-48px, -3vw, -24px));
+  transform: translate(clamp(-48px, -3vw, -24px), -106px);
 }
 .hero-badge {
   display: inline-flex;
@@ -263,14 +258,16 @@ button, input { font: inherit; }
   gap: clamp(22px, 3vw, 34px);
 }
 .master-heading {
-  max-width: 1180px;
+  max-width: 900px;
+  width: 100%;
   margin: 0 auto;
 }
 .master-heading h2 {
-  max-width: 920px;
+  max-width: none;
   margin: 0;
-  font-size: clamp(36px, 5vw, 66px);
+  font-size: clamp(32px, 2.6vw, 42px);
   line-height: 1.08;
+  white-space: nowrap;
 }
 .master-heading p:not(.kicker) {
   max-width: 860px;
@@ -279,7 +276,7 @@ button, input { font: inherit; }
   line-height: 1.85;
 }
 .master-visual {
-  max-width: 1180px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto;
   box-shadow: var(--shadow);
@@ -290,8 +287,8 @@ button, input { font: inherit; }
   width: 100%;
 }
 .master-visual img {
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 .master-stats {
   display: grid;
@@ -604,6 +601,7 @@ button, input { font: inherit; }
 #smart-farm .section-text {
   margin: 0;
   text-align: left;
+  transform: translateX(70px);
 }
 #smart-farm .section-text .kicker,
 #smart-farm .section-text h2,
@@ -1061,6 +1059,29 @@ button, input { font: inherit; }
 .footer p, .footer small { display: block; max-width: 1180px; color: rgba(255, 255, 255, 0.64); line-height: 1.75; }
 .mobile-fixed { display: none; }
 
+@media (max-height: 960px) and (min-width: 681px) {
+  .hero-content {
+    transform: translate(clamp(-48px, -3vw, -24px), -24px);
+  }
+}
+
+@media (max-height: 1100px) and (min-width: 681px) {
+  .master:not(.master-detail) {
+    gap: 16px;
+    padding-top: 78px;
+    padding-bottom: 28px;
+  }
+  .master:not(.master-detail) .master-visual {
+    max-width: 780px;
+  }
+  .master:not(.master-detail) .master-heading {
+    max-width: 780px;
+  }
+  .master:not(.master-detail) .master-stats {
+    grid-template-columns: repeat(4, minmax(112px, 1fr));
+  }
+}
+
 @media (max-width: 1080px) {
   .menu-button { display: block; }
   .nav {
@@ -1086,6 +1107,7 @@ button, input { font: inherit; }
   #smart-home .home-copy,
   #smart-farm .section-text {
     text-align: center;
+    transform: none;
   }
   .three-up, .feature-grid, .feature-grid.compact, .process-grid, .income-flow, .master-zones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .split, .master-gallery, .home-living-panel, .equipment-panel, .operation-panel, .life-feature-panel { grid-template-columns: 1fr; }
@@ -1112,7 +1134,6 @@ button, input { font: inherit; }
 
 @media (max-width: 680px) {
   .brand small { display: none; }
-  html { scroll-snap-type: y proximity; }
   .hero { min-height: 820px; }
   .section, .image-section, .life-section, .final-cta {
     min-height: auto;
@@ -1124,6 +1145,7 @@ button, input { font: inherit; }
     transform: none;
   }
   .hero h1 { font-size: clamp(44px, 14vw, 76px); }
+  .master-heading h2 { white-space: normal; }
   .hero-actions, .hero-metrics, .three-up, .feature-grid, .feature-grid.compact, .process-grid, .income-flow, .day-grid, .master-zones, .master-stats { grid-template-columns: 1fr; }
   .final-cta h2 {
     white-space: normal;
