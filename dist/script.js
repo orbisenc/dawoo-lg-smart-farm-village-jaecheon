@@ -3,6 +3,15 @@ const menuButton = document.querySelector("[data-menu-button]");
 const nav = document.querySelector("[data-nav]");
 const form = document.querySelector("[data-consult-form]");
 const message = document.querySelector("[data-form-message]");
+const scrollPages = [
+  ...document.querySelectorAll("main > section"),
+  document.querySelector(".footer"),
+].filter(Boolean);
+
+let wheelDelta = 0;
+let wheelResetTimer;
+let isPageScrolling = false;
+let pageScrollTimer;
 
 function updateHeader() {
   header.classList.toggle("is-scrolled", window.scrollY > 20);
@@ -10,6 +19,62 @@ function updateHeader() {
 
 window.addEventListener("scroll", updateHeader, { passive: true });
 updateHeader();
+
+function getCurrentPageIndex() {
+  const viewportAnchor = window.scrollY + window.innerHeight * 0.35;
+  let currentIndex = 0;
+
+  scrollPages.forEach((page, index) => {
+    if (page.offsetTop <= viewportAnchor) {
+      currentIndex = index;
+    }
+  });
+
+  return currentIndex;
+}
+
+function moveToPage(direction) {
+  const currentIndex = getCurrentPageIndex();
+  const nextIndex = Math.min(
+    Math.max(currentIndex + direction, 0),
+    scrollPages.length - 1,
+  );
+
+  if (nextIndex === currentIndex) return;
+
+  isPageScrolling = true;
+  window.scrollTo({
+    top: scrollPages[nextIndex].offsetTop,
+    behavior: "smooth",
+  });
+
+  window.clearTimeout(pageScrollTimer);
+  pageScrollTimer = window.setTimeout(() => {
+    isPageScrolling = false;
+  }, 850);
+}
+
+window.addEventListener(
+  "wheel",
+  (event) => {
+    if (event.ctrlKey || event.target.closest("input, textarea, select")) return;
+
+    event.preventDefault();
+    if (isPageScrolling) return;
+
+    wheelDelta += event.deltaY;
+    window.clearTimeout(wheelResetTimer);
+    wheelResetTimer = window.setTimeout(() => {
+      wheelDelta = 0;
+    }, 160);
+
+    if (Math.abs(wheelDelta) < 24) return;
+
+    moveToPage(wheelDelta > 0 ? 1 : -1);
+    wheelDelta = 0;
+  },
+  { passive: false },
+);
 
 menuButton.addEventListener("click", () => {
   nav.classList.toggle("is-open");
@@ -20,76 +85,6 @@ nav.addEventListener("click", (event) => {
     nav.classList.remove("is-open");
   }
 });
-
-const snapTargets = [...document.querySelectorAll("main > section, .footer")];
-let isSnapScrolling = false;
-
-function easeInOutCubic(t) {
-  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-}
-
-function getSnapPoints() {
-  const headerOffset = 76;
-  const viewport = window.innerHeight;
-  const maxScroll = document.documentElement.scrollHeight - viewport;
-  const points = new Set([0, Math.max(0, maxScroll)]);
-
-  snapTargets.forEach((target) => {
-    const top = Math.max(0, target.offsetTop - headerOffset);
-    points.add(Math.round(top));
-  });
-
-  return [...points].sort((a, b) => a - b);
-}
-
-function animateScrollTo(targetY) {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  const duration = Math.min(1150, Math.max(820, Math.abs(distance) * 0.32));
-  const startTime = performance.now();
-
-  isSnapScrolling = true;
-
-  function step(now) {
-    const progress = Math.min(1, (now - startTime) / duration);
-    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-
-    if (progress < 1) {
-      requestAnimationFrame(step);
-      return;
-    }
-
-    window.scrollTo(0, targetY);
-    setTimeout(() => {
-      isSnapScrolling = false;
-    }, 80);
-  }
-
-  requestAnimationFrame(step);
-}
-
-window.addEventListener(
-  "wheel",
-  (event) => {
-    if (event.ctrlKey || Math.abs(event.deltaY) < 45) return;
-
-    event.preventDefault();
-    if (isSnapScrolling) return;
-
-    const current = window.scrollY;
-    const points = getSnapPoints();
-    const direction = Math.sign(event.deltaY);
-    const target =
-      direction > 0
-        ? points.find((point) => point > current + 48)
-        : [...points].reverse().find((point) => point < current - 48);
-
-    if (target !== undefined) {
-      animateScrollTo(target);
-    }
-  },
-  { passive: false }
-);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
